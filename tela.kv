@@ -1,137 +1,142 @@
 ScreenManagement:
-    #transition: FadeTransition()
-    Home:
-    Cadastro:
-    Login:
-    Mesas:
+	#transition: FadeTransition()
+	Home:
+	Cadastro:
+	Login:
+	Mesas:
 <Home>:
-    name: "home"
-    Label:
-        size_hint: .1, .1
-        pos_hint: {"x":.45, "y":.8}
-        font_size: "50sp"
-        text: "NomeApp"
-    Button:
-        size_hint: .4, .1
-        pos_hint: {"x":.30, "y":.5}
-        text: "Login"
-        font_size: "30sp"
-        on_release:
-            app.root.trocar_tela("login")     #
-            #app.root.current = "login"
-    Button:
-        size_hint: .4, .1
-        pos_hint: {"x":.30, "y": .3}
-        text: "Criar conta"
-        font_size: "30sp"
-        on_release: app.root.current = "cadastro"
+	name: "home"
+	Label:
+		size_hint: .1, .1
+		pos_hint: {"x":.45, "y":.8}
+		font_size: "50sp"
+		text: "NomeApp"
+	Button:
+		size_hint: .4, .1
+		pos_hint: {"x":.30, "y":.5}
+		text: "Login"
+		font_size: "30sp"
+		on_release:
+			app.root.trocar_tela("login")     #
+			#app.root.current = "login"
+	Button:
+		size_hint: .4, .1
+		pos_hint: {"x":.30, "y": .3}
+		text: "Criar conta"
+		font_size: "30sp"
+		on_release: app.root.current = "cadastro"
 <Cadastro>:
-    name: "cadastro"
-    Label:
-        id: lb_cadastro
-        size_hint: .1, .1
-        pos_hint: {"x":.45, "y":.8}
-        font_size: "35sp"
-        text: "Faça o seu Cadastro"
-    TextInput:
-        id: ti_usuario
-        size_hint: .4, .05
-        pos_hint: {"x":.3, "y":.6}
-        font_size: "15sp"
-        multiline: False
-        hint_text: "Nome do usuario"
-        text: ""
-    TextInput:
-        id: ti_senha
-        size_hint: .4, .05
-        pos_hint: {"x":.3, "y":.5}
-        font_size: "15sp"
-        multiline: False
-        password: True
-        hint_text: "Digite a senha"
-        text: ""
-    TextInput:
-        id: ti_email
-        size_hint: .4, .05
-        pos_hint: {"x":.3, "y":.4}
-        font_size: "15sp"
-        hint_text: "Digite o seu email"
-        text: ""
-    Button:
-        size_hint: .3, .05
-        pos_hint: {"x":.35, "y": .3}
-        text: "Cadastrar"
-    Button:
-        size_hint: .3, .05
-        pos_hint: {"x":.35, "y": .1}
-        text: "Voltar"
-        on_release:
-            ti_usuario.text = ""
-            ti_senha.text = ""
-            #app.screenmanagement.trocar_tela("")
-            app.root.trocar_tela("home")     #
-            #app.root.current = "home"
+	name: "cadastro"
+	Label:
+		id: lb_cadastro
+		size_hint: .1, .1
+		pos_hint: {"x":.45, "y":.8}
+		font_size: "35sp"
+		text: "Faça o seu Cadastro"
+	TextInput:
+		id: ti_usuario                
+		size_hint: .4, .05
+		pos_hint: {"x":.3, "y":.6}
+		font_size: "15sp"
+		multiline: False
+		hint_text: "Nome do usuario"
+		text: ""
+	TextInput:
+		id: ti_senha                       
+		size_hint: .4, .05
+		pos_hint: {"x":.3, "y":.5}
+		font_size: "15sp"
+		multiline: False
+		password: True
+		hint_text: "Digite a senha"      
+		text: "" 
+	TextInput:
+		id: ti_email                       
+		size_hint: .4, .05
+		pos_hint: {"x":.3, "y":.4}
+		font_size: "15sp"
+		hint_text: "Digite o seu email"      
+		text: "" 
+	Button:
+		size_hint: .3, .05
+		pos_hint: {"x":.35, "y": .3}
+		text: "Cadastrar"
+		on_release:
+			root.realizar_cadastro()
+			ti_usuario.text = ""
+			ti_senha.text = ""
+			ti_email.text = ""
+	Button:
+		size_hint: .3, .05
+		pos_hint: {"x":.35, "y": .1}
+		text: "Voltar"
+		on_release:
+			ti_usuario.text = ""
+			ti_senha.text = ""
+			#app.screenmanagement.trocar_tela("")
+			app.root.trocar_tela("home")     
+			#app.root.current = "home"
 <Login>:
-    name: "login"
-    Label:
-        id: lb_primeiro
-        size_hint: .1, .1
-        pos_hint: {"x":.45, "y":.9}
-        font_size: "50sp"
-        text: "NomeApp"
-    Label:
-        size_hint: .1, .1
-        pos_hint: {"x":.45, "y":.7}
-        font_size: "40sp"
-        text: "Login"
-    TextInput:
-        id: ti_usuario                #
-        size_hint: .4, .05
-        pos_hint: {"x":.3, "y":.6}
-        font_size: "15sp"
-        multiline: False
-        hint_text: "Nome do usuario"
-        text: ""
-    TextInput:
-        id: ti_senha                #
-        size_hint: .4, .05
-        pos_hint: {"x":.3, "y":.5}
-        font_size: "15sp"
-        multiline: False
-        password: True                       #
-        hint_text: "Digite a senha"      #
-        text: ""
-    Label:
-        size_hint: .1, .1
-        pos_hint: {"x":.45, "y":.4}
-        font_size: "20sp"
-        text: "Esqueci a senha"
-    Button:
-        #largura .1 = 10% e altura .1 = 10%
-        size_hint: .3, .05
-        pos_hint: {"x":.35, "y": .3}
-        text: "Entrar"
-        on_release:
-            root.login_valido()
-            if root.login_valido(): app.root.current = "mesa";app.root.get_screen("mesa").oi()
-            #app.root.current = "login"
-    Button:
-        size_hint: .3, .05
-        pos_hint: {"x":.35, "y": .2}
-        text: "Voltar"
-        on_release:
-            ti_usuario.text = ""
-            ti_senha.text = ""
-            #app.screenmanagement.trocar_tela("")
-            app.root.trocar_tela("home")     #
-            #app.root.current = "home"
-    Label:
-        size_hint: .1, .1
-        pos_hint: {"x":.45, "y":.0}
-        font_size: "20sp"
-        text: "crie sua conta"
+	name: "login"
+	Label:
+		id: lb_primeiro
+		size_hint: .1, .1
+		pos_hint: {"x":.45, "y":.9}
+		font_size: "50sp"
+		text: "NomeApp"
+	Label:
+		size_hint: .1, .1
+		pos_hint: {"x":.45, "y":.7}
+		font_size: "40sp"
+		text: "Login"
+	TextInput:
+		id: ti_usuario                
+		size_hint: .4, .05
+		pos_hint: {"x":.3, "y":.6}
+		font_size: "15sp"
+		multiline: False
+		hint_text: "Nome do usuario"
+		text: ""
+	TextInput:
+		id: ti_senha                #        
+		size_hint: .4, .05
+		pos_hint: {"x":.3, "y":.5}
+		font_size: "15sp"
+		multiline: False
+		password: True                       #
+		hint_text: "Digite a senha"      #
+		text: ""
+	Label:
+		size_hint: .1, .1
+		pos_hint: {"x":.45, "y":.4}
+		font_size: "20sp"
+		text: "Esqueci a senha"
+	Button:
+		#largura .1 = 10% e altura .1 = 10%
+		size_hint: .3, .05
+		pos_hint: {"x":.35, "y": .3}
+		text: "Entrar"        
+		on_release:
+			if root.login_valido(): app.root.current = "mesas"
+			#else: lb_primeiro.text = "Login com erro"
+			#app.root.current = "mesas"
+	Button:
+		size_hint: .3, .05
+		pos_hint: {"x":.35, "y": .2}
+		text: "Voltar"
+		on_release:
+			ti_usuario.text = ""
+			ti_senha.text = ""
+			#app.screenmanagement.trocar_tela("")
+			app.root.trocar_tela("home")     #
+			#app.root.current = "home"
+	Label:
+		size_hint: .1, .1
+		pos_hint: {"x":.45, "y":.0}
+		font_size: "20sp"
+		text: "crie sua conta"
 <Mesas>:
-    name:"mesa"
+    name:"mesas"
     BoxLayout:
         ScrollView:
             do_scroll_x:False

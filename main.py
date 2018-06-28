@@ -10,11 +10,11 @@ class Home(Screen):
      pass
 
 class Cadastro(Screen):
-     def realizar_cadastro(self):	 
-         Dados().novo(self.ids["ti_usuario"].text, self.ids["ti_senha"].text, self.ids["ti_email"].text) #método para cadastrar
-		 
-     #pass
 	 
+	 def realizar_cadastro(self):	 
+            Dados().novo(self.ids["ti_usuario"].text, self.ids["ti_senha"].text, self.ids["ti_email"].text) #método para cadastrar
+            self.ids["lb_cadastro1"].text = "Cadastro realizado com sucesso"           
+			
 class Mesas(Screen):
 
      def oi(self):

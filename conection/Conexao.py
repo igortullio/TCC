@@ -1,6 +1,7 @@
 import sqlite3
 from domain import Pessoa
 
+
 class Conexao:
 
     def getCon(self):
@@ -8,7 +9,7 @@ class Conexao:
             con = self.criarBanco()
             return con
         except Exception as e:
-            print('Não foi possível criar a conexão\nErro: ',e)
+            print('Não foi possível criar a conexão\nErro: ', e)
 
     def criarBanco(self):
         try:
@@ -24,7 +25,7 @@ class Conexao:
             """)
             return con;
         except Exception as e:
-            print('erro: %s' %e)
+            print('erro: %s' % e)
 
 
 class Dados(Conexao):
@@ -49,19 +50,19 @@ class Dados(Conexao):
         pessoas = []
         lista = self.con.cursor().execute("select * from contato")
         for p in lista:
-            pessoas.append(Pessoa.Pessoa(p[1],p[2],p[0]))
+            pessoas.append(Pessoa.Pessoa(p[1], p[2], p[0]))
 
         return pessoas
 
     def pesquisar(self, nome):
         pessoas = []
         lista = self.con.cursor().execute("select * from contato where nome like ?",
-                                          ('%'+str(nome)+'%',))
+                                          ('%' + str(nome) + '%',))
         for p in lista:
-            pessoas.append(Pessoa.Pessoa(p[1],p[2],p[0]))
+            pessoas.append(Pessoa.Pessoa(p[1], p[2], p[0]))
 
         return pessoas
-		
+
     def login(self, login_, senha_):
         var_select = []
         var_select.append(login_)
@@ -72,5 +73,5 @@ class Dados(Conexao):
         cursor.execute(sql, var_select)
         result = cursor.fetchall()
         for row in result:
-            print ("Login Válido")
+            print("Login Válido")
             return True

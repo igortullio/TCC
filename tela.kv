@@ -17,8 +17,7 @@ ScreenManagement:
 		text: "Login"
 		font_size: "30sp"
 		on_release:
-			app.root.trocar_tela("login")     #
-			#app.root.current = "login"
+			app.root.trocar_tela("login")		
 	Button:
 		size_hint: .4, .1
 		pos_hint: {"x":.30, "y": .3}
@@ -28,11 +27,17 @@ ScreenManagement:
 <Cadastro>:
 	name: "cadastro"
 	Label:
+		id: lb_cadastro1
+		size_hint: .1, .1
+		pos_hint: {"x":.45, "y":.9}
+		font_size: "25sp"
+		text: ""
+	Label:
 		id: lb_cadastro
 		size_hint: .1, .1
 		pos_hint: {"x":.45, "y":.8}
-		font_size: "35sp"
-		text: "Faça o seu Cadastro"
+		font_size: "40sp"
+		text: "Crie a sua conta:"
 	TextInput:
 		id: ti_usuario                
 		size_hint: .4, .05
@@ -62,10 +67,11 @@ ScreenManagement:
 		pos_hint: {"x":.35, "y": .3}
 		text: "Cadastrar"
 		on_release:
-			root.realizar_cadastro()
+		    if ti_usuario.text == "" or ti_senha.text == "" or ti_email.text == "" : lb_cadastro1.text = "Preencha todos os campos."
+			else: root.realizar_cadastro()
 			ti_usuario.text = ""
 			ti_senha.text = ""
-			ti_email.text = ""
+			ti_email.text = ""			
 	Button:
 		size_hint: .3, .05
 		pos_hint: {"x":.35, "y": .1}
@@ -73,17 +79,16 @@ ScreenManagement:
 		on_release:
 			ti_usuario.text = ""
 			ti_senha.text = ""
-			#app.screenmanagement.trocar_tela("")
-			app.root.trocar_tela("home")     
-			#app.root.current = "home"
+			lb_cadastro1.text = ""
+			app.root.trocar_tela("home")
 <Login>:
 	name: "login"
 	Label:
 		id: lb_primeiro
 		size_hint: .1, .1
 		pos_hint: {"x":.45, "y":.9}
-		font_size: "50sp"
-		text: "NomeApp"
+		font_size: "30sp"
+		text: ""
 	Label:
 		size_hint: .1, .1
 		pos_hint: {"x":.45, "y":.7}
@@ -117,8 +122,8 @@ ScreenManagement:
 		pos_hint: {"x":.35, "y": .3}
 		text: "Entrar"        
 		on_release:
-			if root.login_valido(): app.root.current = "mesas"
-			#else: lb_primeiro.text = "Login com erro"
+			if root.login_valido(): app.root.current = "mesas"			
+			else: lb_primeiro.text = "Login com erro. Tente novamente."
 			#app.root.current = "mesas"
 	Button:
 		size_hint: .3, .05
@@ -127,14 +132,10 @@ ScreenManagement:
 		on_release:
 			ti_usuario.text = ""
 			ti_senha.text = ""
-			#app.screenmanagement.trocar_tela("")
-			app.root.trocar_tela("home")     #
+			#app.screenmanagement.trocar_tela("")			
+			app.root.trocar_tela("home") 
+			lb_primeiro.text = ""
 			#app.root.current = "home"
-	Label:
-		size_hint: .1, .1
-		pos_hint: {"x":.45, "y":.0}
-		font_size: "20sp"
-		text: "crie sua conta"
 <Mesas>:
     name:"mesas"
     BoxLayout:

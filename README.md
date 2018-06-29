@@ -66,8 +66,6 @@ git clone https://github.com/igortullio/tcc.git
 ```git
 python main.py
 ```
-## Restrições
-
 ## Referências
 * [Python](https://www.python.org/)
 * [Kivy](https://kivy.org/)

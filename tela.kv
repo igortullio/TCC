@@ -4,6 +4,7 @@ ScreenManagement:
 	Cadastro:
 	Login:
 	Mesas:
+	Esqueci:
 <Home>:
 	name: "home"
 	Label:
@@ -16,14 +17,13 @@ ScreenManagement:
 		pos_hint: {"x":.30, "y":.5}
 		text: "Login"
 		font_size: "30sp"
-		on_release:
-			app.root.trocar_tela("login")		
+		on_release: app.root.trocar_tela("login")
 	Button:
 		size_hint: .4, .1
 		pos_hint: {"x":.30, "y": .3}
 		text: "Criar conta"
 		font_size: "30sp"
-		on_release: app.root.current = "cadastro"
+		on_release: app.root.trocar_tela("cadastro")
 <Cadastro>:
 	name: "cadastro"
 	Label:
@@ -60,7 +60,7 @@ ScreenManagement:
 		size_hint: .4, .05
 		pos_hint: {"x":.3, "y":.4}
 		font_size: "15sp"
-		hint_text: "Digite o seu email"      
+		hint_text: "Digite o seu e-mail"
 		text: "" 
 	Button:
 		size_hint: .3, .05
@@ -88,7 +88,6 @@ ScreenManagement:
 		size_hint: .1, .1
 		pos_hint: {"x":.45, "y":.9}
 		font_size: "30sp"
-		text: ""
 	Label:
 		size_hint: .1, .1
 		pos_hint: {"x":.45, "y":.7}
@@ -101,48 +100,46 @@ ScreenManagement:
 		font_size: "15sp"
 		multiline: False
 		hint_text: "Nome do usuario"
-		text: ""
 	TextInput:
-		id: ti_senha                #        
+		id: ti_senha
 		size_hint: .4, .05
 		pos_hint: {"x":.3, "y":.5}
 		font_size: "15sp"
 		multiline: False
-		password: True                       #
-		hint_text: "Digite a senha"      #
-		text: ""
-	Label:
+		password: True
+		hint_text: "Digite a senha"
+	Button:
+	    background_color: 0, 0, 0, 0
 		size_hint: .1, .1
 		pos_hint: {"x":.45, "y":.4}
 		font_size: "20sp"
 		text: "Esqueci a senha"
+		on_release:
+		    app.root.trocar_tela("esqueci")
 	Button:
-		#largura .1 = 10% e altura .1 = 10%
 		size_hint: .3, .05
 		pos_hint: {"x":.35, "y": .3}
 		text: "Entrar"        
 		on_release:
-			if root.login_valido(): app.root.current = "mesas"			
-			else: lb_primeiro.text = "Login com erro. Tente novamente."
-			#app.root.current = "mesas"
+			if root.login_valido(): app.root.trocar_tela("mesas"); app.root.get_screen("mesas").oi()
+            else: lb_primeiro.text = "Login com erro. Tente novamente."
+            ti_usuario.text = ""
+            ti_senha.text = ""
 	Button:
 		size_hint: .3, .05
-		pos_hint: {"x":.35, "y": .2}
+		pos_hint: {"x":.35, "y": .1}
 		text: "Voltar"
 		on_release:
 			ti_usuario.text = ""
 			ti_senha.text = ""
-			#app.screenmanagement.trocar_tela("")			
-			app.root.trocar_tela("home") 
+			app.root.trocar_tela("home")
 			lb_primeiro.text = ""
-			#app.root.current = "home"
 <Mesas>:
     name:"mesas"
     BoxLayout:
         ScrollView:
             do_scroll_x:False
             do_scroll_y:True
-
             GridLayout:
                 id: outros
                 cols:5
@@ -150,3 +147,34 @@ ScreenManagement:
                 row_default_height: '100dp'
                 row_force_default: True
                 height: self.minimum_height
+    Button:
+        size_hint: .3, .05
+        pos_hint: {"x":.35, "y": .1}
+        text: "Voltar"
+        on_release:
+            app.root.trocar_tela("login")
+<Esqueci>:
+    name: "esqueci"
+    Label:
+        size_hint: .1, .1
+        pos_hint: {"x":.45, "y":.7}
+        font_size: "30sp"
+        text: "Digite seu e-mail:"
+    TextInput:
+        id: ti_usuario
+        size_hint: .4, .05
+        pos_hint: {"x":.3, "y":.6}
+        font_size: "15sp"
+        multiline: False
+        hint_text: "E-mail"
+    Button:
+        size_hint: .3, .05
+        pos_hint: {"x":.35, "y": .5}
+        text: "Enviar"
+        on_release:
+    Button:
+        size_hint: .3, .05
+        pos_hint: {"x":.35, "y": .1}
+        text: "Voltar"
+        on_release:
+            app.root.trocar_tela("login")

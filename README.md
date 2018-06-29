@@ -39,6 +39,8 @@ sudo apt-get install git
 ```sh
 sudo apt-get install python3
 ```
+Obs.: Troque o ``python3`` para ``python`` para a versão Python2
+
 3. Adicione o PPAs (Personal Package Archives) do Kivy estável
 ```sh
 sudo add-apt-repository ppa:kivy-team/kivy
@@ -52,6 +54,8 @@ sudo apt-get update
 ```sh
 sudo apt-get install python3-kivy
 ```
+Obs.: Troque o ``python3-kivy`` para ``python-kivy`` para a versão do Kivy para Python2
+
 ## Execução
 Segue a seguir as listas dos passos necessários para executar a aplicação:
 1. Faça o clone deste projeto

@@ -4,7 +4,7 @@ Desenvolver um aplicativo para smartphone simples, que possa conversar com um
 dispositivo eletrônico no futuro, usando um ambiente de desenvolvimento em Python
 ## Autores e Principais Contribuidores
 * [Caio Leandro](https://github.com/Caio820) (Construção da estrutura da aplicação)
-* [Pedro Paul](https://github.com/ppaul804) (Construção do estilização e dos protótipos da aplicação)
+* [Pedro Paul](https://github.com/ppaul804) (Construção da estilização e dos protótipos da aplicação)
 * [Igor Túllio](https://github.com/igortullio) (Construção do bando de dados e integração com a aplicação)
 # Sobre a aplicação
 ## Instalação
@@ -29,11 +29,38 @@ python -m pip install docutils pygments pypiwin32 kivy.deps.sdl2 kivy.deps.glew
 ```bat
 python -m pip install kivy
 ```
+### Linux
+0. Abra o terminal do linux
+1. Instale o Git
+```sh
+sudo apt-get install git
+```
+2. O Python já vem instalado em algumas distribuições linux, porém, caso ele não esteja instalado, instale-o.
+```sh
+sudo apt-get install python3
+```
+3. Adicione o PPAs (Personal Package Archives) do Kivy estável
+```sh
+sudo add-apt-repository ppa:kivy-team/kivy
+```
+4. Atualize sua lista de pacotes usando seu gerenciador de pacotes
+```sh
+sudo apt-get update
+```
+
+5. Instale o Kivy
+```sh
+sudo apt-get install python3-kivy
+```
 ## Execução
 Segue a seguir as listas dos passos necessários para executar a aplicação:
-1. Baixe este projeto
+1. Faça o clone deste projeto
 ```git
 git clone https://github.com/igortullio/tcc.git
+```
+2. Execute o arquivo ``main.py``
+```git
+python main.py
 ```
 ## Restrições
 

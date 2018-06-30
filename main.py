@@ -14,10 +14,11 @@ class Home(Screen):
 class Cadastro(Screen):
 
     def realizar_cadastro(self):
-        Dados().novo(self.ids["ti_usuario"].text, self.ids["ti_senha"].text, self.ids["ti_email"].text)  # método para cadastrar
+        Dados().novo(self.ids["ti_usuario"].text, self.ids["ti_senha"].text,
+                     self.ids["ti_email"].text)  # método para cadastrar
         self.ids["lb_cadastro1"].text = "Cadastro realizado com sucesso"
 
-		
+
 class Mesas(Screen):
 
     def oi(self):
@@ -42,11 +43,13 @@ class Mesas(Screen):
             j = 5
         else:
             j += 1
-	
+
+
 class Login(Screen):
 
     def login_valido(self):
-        if Dados().login(self.ids["ti_usuario"].text, self.ids["ti_senha"].text):  # chamada método verificar login no banco
+        if Dados().login(self.ids["ti_usuario"].text,
+                         self.ids["ti_senha"].text):  # chamada método verificar login no banco
             return True
 
 
@@ -57,6 +60,11 @@ class Esqueci(Screen):
 class Opcao(Screen):
     pass
 
+
+class Confirmacao(Screen):
+    pass
+
+
 class ScreenManagement(ScreenManager):
 
     def trocar_tela(self, tela):
@@ -66,7 +74,7 @@ class ScreenManagement(ScreenManager):
 class Tela(App):
 
     def build(self):
-        return presentation				
+        return presentation
 
 
 presentation = Builder.load_file("tela.kv")

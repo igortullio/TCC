@@ -6,6 +6,7 @@ ScreenManagement:
 	Mesas:
 	Esqueci:
 	Opcao:
+	Confirmacao:
 <Home>:
 	name: "home"
 	Label:
@@ -156,17 +157,55 @@ ScreenManagement:
 		pos_hint: {"x":.45, "y":.7}
 		font_size: "20sp"
 		text: "Selecione a quantidade de lugares:"
+	Button:
+        size_hint: .1, .1
+        pos_hint: {"x":.35, "y": .6}
+        text: "<"
+        on_release:
+            if int(cadeira.text) > 0: cadeira.text= str(int(cadeira.text)-1)
+	Label:
+	    id: cadeira
+	    size_hint: .1, .1
+        pos_hint: {"x":.45, "y": .6}
+        font_size: "20sp"
+        text: "0"
+	Button:
+	    size_hint: .1, .1
+        pos_hint: {"x":.55, "y": .6}
+        text: ">"
+        on_release:
+            if int(cadeira.text) < 3: cadeira.text= str(int(cadeira.text)+1)
 	Label:
 		id: lb_terceiro
 		size_hint: .1, .1
 		pos_hint: {"x":.45, "y":.5}
 		font_size: "20sp"
-		text: "Selecione o tempo desejado:"
+		text: "Selecione o tempo desejado (min):"
+	Button:
+        size_hint: .1, .1
+        pos_hint: {"x":.35, "y": .4}
+        text: "<"
+        on_release:
+            if int(tempo.text) > 0: tempo.text= str(int(tempo.text)-5)
+    Label:
+        id: tempo
+        size_hint: .1, .1
+        pos_hint: {"x":.45, "y": .4}
+        font_size: "20sp"
+        text: "0"
+    Button:
+        size_hint: .1, .1
+        pos_hint: {"x":.55, "y": .4}
+        text: ">"
+        on_release:
+            if int(tempo.text) < 60: tempo.text= str(int(tempo.text)+5)
 	Button:
 		id: btn_Confirmar
 		size_hint: .3, .05
 		pos_hint: {"x":.35, "y": .2}
 		text: "Confirmar"
+		on_release:
+            app.root.trocar_tela("confirmacao")
 	Button:
 		size_hint: .3, .05
 		pos_hint: {"x":.35, "y": .1}
@@ -229,7 +268,7 @@ ScreenManagement:
 		pos_hint: {"x":.65, "y":.70}
 		font_size: "20sp"
 		on_release:
-			app.root.trocar_tela("opcao")		
+			app.root.trocar_tela("opcao")
 <Esqueci>:
     name: "esqueci"
     Label:
@@ -255,3 +294,17 @@ ScreenManagement:
         text: "Voltar"
         on_release:
             app.root.trocar_tela("login")
+<Confirmacao>:
+    name: "confirmacao"
+    Label:
+        size_hint: .1, .1
+        pos_hint: {"x":.45, "y":.8}
+        font_size: "30sp"
+        text: "Selecionado com sucesso"
+    Button:
+        id: btnExit
+        size_hint: .4, .1
+        pos_hint: {"x":.30, "y": .1}
+        text: "Sair"
+        font_size: "30sp"
+        on_release: app.stop()

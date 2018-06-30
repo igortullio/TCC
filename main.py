@@ -3,6 +3,8 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button, Label
+from kivy.base import runTouchApp
+from kivy.uix.spinner import Spinner
 
 
 class Home(Screen):
@@ -15,12 +17,12 @@ class Cadastro(Screen):
         Dados().novo(self.ids["ti_usuario"].text, self.ids["ti_senha"].text, self.ids["ti_email"].text)  # método para cadastrar
         self.ids["lb_cadastro1"].text = "Cadastro realizado com sucesso"
 
-
+		
 class Mesas(Screen):
 
     def oi(self):
         j = 1
-        for i in range(0, 35):
+        for i in range(0, 25):
             if i % 2 == 0:
                 if j < 4:
                     self.ids["outros"].add_widget(Label(text=""))
@@ -40,8 +42,7 @@ class Mesas(Screen):
             j = 5
         else:
             j += 1
-
-
+	
 class Login(Screen):
 
     def login_valido(self):
@@ -53,6 +54,9 @@ class Esqueci(Screen):
     pass
 
 
+class Opcao(Screen):
+    pass
+
 class ScreenManagement(ScreenManager):
 
     def trocar_tela(self, tela):
@@ -62,7 +66,7 @@ class ScreenManagement(ScreenManager):
 class Tela(App):
 
     def build(self):
-        return presentation
+        return presentation				
 
 
 presentation = Builder.load_file("tela.kv")

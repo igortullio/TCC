@@ -5,13 +5,14 @@ ScreenManagement:
 	Login:
 	Mesas:
 	Esqueci:
+	Opcao:
 <Home>:
 	name: "home"
 	Label:
 		size_hint: .1, .1
 		pos_hint: {"x":.45, "y":.8}
 		font_size: "50sp"
-		text: "NomeApp"
+		text: "Aplicativo de Reserva"
 	Button:
 		size_hint: .4, .1
 		pos_hint: {"x":.30, "y":.5}
@@ -24,6 +25,13 @@ ScreenManagement:
 		text: "Criar conta"
 		font_size: "30sp"
 		on_release: app.root.trocar_tela("cadastro")
+	Button:
+		id: btnExit
+		size_hint: .4, .1
+		pos_hint: {"x":.30, "y": .1}
+		text: "Sair"
+		font_size: "30sp"
+		on_release: app.stop()
 <Cadastro>:
 	name: "cadastro"
 	Label:
@@ -121,7 +129,7 @@ ScreenManagement:
 		pos_hint: {"x":.35, "y": .3}
 		text: "Entrar"        
 		on_release:
-			if root.login_valido(): app.root.trocar_tela("mesas"); app.root.get_screen("mesas").oi()
+			if root.login_valido(): app.root.trocar_tela("mesas"); app.root.get_screen("mesas").oi(); lb_primeiro.text = ""
             else: lb_primeiro.text = "Login com erro. Tente novamente."
             ti_usuario.text = ""
             ti_senha.text = ""
@@ -134,6 +142,37 @@ ScreenManagement:
 			ti_senha.text = ""
 			app.root.trocar_tela("home")
 			lb_primeiro.text = ""
+<Opcao>:
+	name:"opcao"
+	Label:
+		id: lb_primeiro
+		size_hint: .1, .1
+		pos_hint: {"x":.45, "y":.9}
+		font_size: "30sp"
+		text: "Tela de Reserva"
+	Label:
+		id: lb_segundo
+		size_hint: .1, .1
+		pos_hint: {"x":.45, "y":.7}
+		font_size: "20sp"
+		text: "Selecione a quantidade de lugares:"
+	Label:
+		id: lb_terceiro
+		size_hint: .1, .1
+		pos_hint: {"x":.45, "y":.5}
+		font_size: "20sp"
+		text: "Selecione o tempo desejado:"
+	Button:
+		id: btn_Confirmar
+		size_hint: .3, .05
+		pos_hint: {"x":.35, "y": .2}
+		text: "Confirmar"
+	Button:
+		size_hint: .3, .05
+		pos_hint: {"x":.35, "y": .1}
+		text: "Voltar"
+		on_release:
+			app.root.trocar_tela("mesas")
 <Mesas>:
     name:"mesas"
     BoxLayout:
@@ -147,12 +186,50 @@ ScreenManagement:
                 row_default_height: '100dp'
                 row_force_default: True
                 height: self.minimum_height
+	Label:
+		id: lb_selecione
+		size_hint: .1, .1
+		pos_hint: {"x":.45, "y":.071}
+		font_size: "22sp"
+		text: "SELECIONE A MESA"
     Button:
         size_hint: .3, .05
-        pos_hint: {"x":.35, "y": .1}
-        text: "Voltar"
+        pos_hint: {"x":.35, "y": .022}
+        text: "Sair"
         on_release:
             app.root.trocar_tela("login")
+	Button:
+		name:"mesa3"
+	    background_color: 0, 0, 0, 0
+		size_hint: .1, .1
+		pos_hint: {"x":.25, "y":.36}
+		font_size: "20sp"
+		on_release:
+			app.root.trocar_tela("opcao")
+	Button:
+		name:"mesa4"
+	    background_color: 0, 0, 0, 0
+		size_hint: .1, .1
+		pos_hint: {"x":.65, "y":.36}
+		font_size: "20sp"
+		on_release:
+			app.root.trocar_tela("opcao")
+	Button:
+		name:"mesa1"
+	    background_color: 0, 0, 0, 0
+		size_hint: .1, .1
+		pos_hint: {"x":.25, "y":.70}
+		font_size: "20sp"
+		on_release:
+			app.root.trocar_tela("opcao")
+	Button:
+		name:"mesa2"
+	    background_color: 0, 0, 0, 0
+		size_hint: .1, .1
+		pos_hint: {"x":.65, "y":.70}
+		font_size: "20sp"
+		on_release:
+			app.root.trocar_tela("opcao")		
 <Esqueci>:
     name: "esqueci"
     Label:

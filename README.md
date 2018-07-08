@@ -5,7 +5,7 @@ dispositivo eletrônico no futuro, usando um ambiente de desenvolvimento em Pyth
 ## Autores e Principais Contribuidores
 * [Caio Leandro](https://github.com/Caio820) (Construção da estrutura da aplicação)
 * [Pedro Paul](https://github.com/ppaul804) (Construção da estilização e dos protótipos da aplicação)
-* [Igor Túllio](https://github.com/igortullio) (Construção do bando de dados e integração com a aplicação)
+* [Igor Túllio](https://github.com/igortullio) (Construção do banco de dados e integração com a aplicação)
 # Sobre a aplicação
 ## Instalação
 Segue a seguir a lista dos passos necessários para instalar as ferramentas necessárias para a execução da aplicação:
@@ -20,7 +20,7 @@ python -m pip install --upgrade pip wheel setuptools
 ```
 Obs.: Caso o comando `python` não funcione, tente mudá-lo para `py`.
 
-5. Instale as depedências do Kivy
+5. Instale as dependências do Kivy
 ```bat
 python -m pip install docutils pygments pypiwin32 kivy.deps.sdl2 kivy.deps.glew
 ```
